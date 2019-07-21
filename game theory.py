@@ -18,8 +18,6 @@ def calculate_mex(Set):
 
 
 def calculate_grundy(n):
-    if(n<0):
-        return 0
     if 0 <= n <= 3:    #end conditions depends on the question
         return n
     
@@ -27,7 +25,8 @@ def calculate_grundy(n):
 
     for i in taken_allowed:
         #print(n-i)
-        Set.add(calculate_grundy(n-i))   #recursion depends on the question
+	if(n-i)<=0:
+		Set.add(calculate_grundy(n-i))   #recursion depends on the question
     #print(Set)
         
     return(calculate_mex(Set))
